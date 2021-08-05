@@ -1,9 +1,17 @@
+import os
+
 class Parser:
     def __init__(self, d_path, limit = 100):
         self.d_path = d_path
         self.limit = limit
         self.questions = []
         self.answers = []
+        if not os.path.exists("datasets/sudoku.csv"):
+            try:
+                print("trying to unzip archive.zip")
+                os.system("unzip datasets/archive.zip -d datasets")
+            except:
+                print("unzip util not found")
 
     def process(self, data):
         matrix = []
