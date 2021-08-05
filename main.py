@@ -1,5 +1,7 @@
 from parser import Parser
 import math
+import random
+
 
 class Solver:
     def __init__(self, matrix):
@@ -68,11 +70,14 @@ class Solver:
                         self.matrix[i][j] = missing.pop()
 
 
-data = Parser("datasets/sudoku.csv")
-data.read_data()
-
-sample = data.questions[0]
-solver = Solver(sample)
-solver.solve()
-solver.print()
+if __name__ == "__main__":
+    data = Parser("datasets/sudoku.csv")
+    data.read_data()
+    n = len(data.questions)
+    idx = random.randint(0, n)
+    print(f"solving sudoku number {idx}")
+    sample = data.questions[idx]
+    solver = Solver(sample)
+    solver.solve()
+    solver.print()
 #solver.explore_missing()
